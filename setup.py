@@ -5,7 +5,7 @@ setup(
     version='0.1.0',
     author='Sergey Kotov',
     author_email='ikoshak@gmail.com',
-    packages=['ww_storage_client',],
+    packages=['ww_storage_client', 'ww_storage_client.templatetags'],
     url='https://github.com/ikoshak/ww_storage_client.git',
     license='',
     description='Client lib for Wiseweb Storage',
