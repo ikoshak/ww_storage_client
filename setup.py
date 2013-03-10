@@ -10,5 +10,5 @@ setup(
     license='',
     description='Client lib for Wiseweb Storage',
     long_description='',
-    install_requires=[],
+    install_requires=['PIL', 'Django'],
 )

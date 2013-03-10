@@ -1,6 +1,7 @@
 # encoding: utf-8
 from django import template
-import core.storage as storage
+import ww_storage_client.storage as storage
+
 
 
 register = template.Library()
