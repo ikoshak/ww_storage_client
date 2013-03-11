@@ -10,13 +10,17 @@ def get_file_path(filename):
     return os.path.join(filename[0], filename[1])
 
 
-def get_file_url(filename):
+def get_file_url(filename, thumb=None):
     """
     Get file url
     """
     server, file = filename.split('_')
     config = settings.WW_STORAGES_LIST.get(server)
-    return '/'.join([config.get('web_url'), get_file_path(file), file])
+    if thumb:
+        real_file = thumb+'@'+file
+    else:
+        real_file = file
+    return '/'.join([config.get('web_url'), get_file_path(file), real_file])
 
 
 def put_to_server(file):
