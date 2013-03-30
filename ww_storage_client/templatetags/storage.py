@@ -11,6 +11,6 @@ register = template.Library()
 def file_url(context, filename, **kwargs):
     if not filename:
         return kwargs.get('default', '')
-    
+
     return storage.get_file_url(filename, kwargs.get('thumb'))
 

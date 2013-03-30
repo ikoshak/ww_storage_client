@@ -1,4 +1,4 @@
-import os, base64, urllib, urllib2, random
+import os, base64, urllib, urllib2, random, json
 
 from django.conf import settings
 
@@ -35,3 +35,14 @@ def put_to_server(file):
 
     response = urllib2.urlopen(server.get('upload_url'), urllib.urlencode(data))
     return response.read()
+
+
+def document_to_pictures(filename):
+    """
+    send command to storage to generate pictures from document
+    """
+    server, file = filename.split('_')
+    config = settings.WW_STORAGES_LIST.get(server)
+    data = {'name': base64.b64encode(file)}
+    response = urllib2.urlopen(config.get('document_to_picture_url'), urllib.urlencode(data))
+    return json.loads(response.read())
