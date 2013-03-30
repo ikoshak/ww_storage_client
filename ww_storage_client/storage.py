@@ -46,3 +46,8 @@ def document_to_pictures(filename):
     data = {'name': base64.b64encode(file)}
     response = urllib2.urlopen(config.get('document_to_picture_url'), urllib.urlencode(data))
     return json.loads(response.read())
+
+
+def get_document_content(filename):
+    pass
+
