@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='Wiseweb Storage Client',
-    version='0.1.0',
+    version='0.2.0',
     author='Sergey Kotov',
     author_email='ikoshak@gmail.com',
     packages=['ww_storage_client', 'ww_storage_client.templatetags'],
