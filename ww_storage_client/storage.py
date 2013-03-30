@@ -48,6 +48,13 @@ def document_to_pictures(filename):
     return json.loads(response.read())
 
 
-def get_document_content(filename):
-    pass
-
+def get_document_content(filename, file_format):
+    """
+    send command to storage to get document content
+    """
+    server, file = filename.split('_')
+    config = settings.WW_STORAGES_LIST.get(server)
+    data = {'name': base64.b64encode(file), 'format': file_format}
+    response = urllib2.urlopen(config.get('get_document_content_url'), urllib.urlencode(data))
+    result = json.loads(response.read())
+    return json.loads(result['content'])
