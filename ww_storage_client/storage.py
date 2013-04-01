@@ -30,7 +30,7 @@ def put_to_server(file):
     content = b''
     for c in file.chunks():
         content += c
-    data = {'name': base64.b64encode(file.name), 'content': base64.b64encode(content)}
+    data = {'name': base64.b64encode(file.name.encode('utf-8')), 'content': base64.b64encode(content)}
     server = settings.WW_STORAGES_LIST.get(random.choice(settings.WW_STORAGES_LIST.keys()))
 
     response = urllib2.urlopen(server.get('upload_url'), urllib.urlencode(data))
