@@ -57,4 +57,4 @@ def get_document_content(filename, file_format):
     data = {'name': base64.b64encode(file), 'format': file_format}
     response = urllib2.urlopen(config.get('get_document_content_url'), urllib.urlencode(data))
     result = json.loads(response.read())
-    return result
+    return result['content']
