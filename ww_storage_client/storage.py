@@ -23,6 +23,17 @@ def get_file_url(filename, thumb=None):
     return '/'.join([config.get('web_url'), get_file_path(file), real_file])
 
 
+def put_content_to_server(filename, content):
+    """
+    puts file content to one of available server. return filename
+    """
+    data = {'name': base64.b64encode(filename.encode('utf-8')), 'content': base64.b64encode(content)}
+    server = settings.WW_STORAGES_LIST.get(random.choice(settings.WW_STORAGES_LIST.keys()))
+
+    response = urllib2.urlopen(server.get('upload_url'), urllib.urlencode(data))
+    return response.read()
+
+
 def put_to_server(file):
     """
     puts file to one of available server. return filename
